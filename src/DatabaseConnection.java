@@ -1,43 +1,25 @@
 
-# Hospital Management System
 
-## Project Description
-Hospital Management System is a Java-based desktop application developed using Java Swing and MySQL. It helps manage hospital activities such as patients, doctors, appointments, medical history and billing.
+import java.sql.Connection;
+import java.sql.DriverManager;
 
-## Features
-- Admin Login
-- Patient Management
-- Doctor Management
-- Appointment Booking
-- Billing Management
-- View Records
-- Search Patient
-- Update and Delete Patient
-- Update and Delete Doctor
-- Advanced Dashboard
-- Appointment History
-- Medical History Management
-- Search Medical History
-- Update Medical History
-- Delete Medical History
+public class DatabaseConnection {
 
-## Technologies Used
-- Java
-- Java Swing
-- MySQL
-- JDBC
-- VS Code
+    public static Connection getConnection() {
+        try {
+            String url = "jdbc:mysql://localhost:3306/hospital_db";
+            String user = "root";
+            String password = "";
 
-## Database
-Database Name: hospital_db
+            Connection con = DriverManager.getConnection(
+                url, user, password
+            );
 
-## How to Run
-1. Install Java JDK.
-2. Install MySQL Server.
-3. Create the hospital_db database.
-4. Add MySQL Connector JAR inside the lib folder.
-5. Configure database credentials in DatabaseConnection.java.
-6. Compile and run the project.
+            return con;
 
-## Developer
-Java Programming Project
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+}
